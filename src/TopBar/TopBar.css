@@ -1,0 +1,10 @@
+.topbar-appbar {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.topbar-toolbar {
+    display: flex;
+    justify-content: space-between;
+}

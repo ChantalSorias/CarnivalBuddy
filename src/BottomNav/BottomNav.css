@@ -1,0 +1,10 @@
+.bottom-nav-appbar {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.bottom-nav-toolbar {
+    display: flex;
+    justify-content: space-evenly;
+}

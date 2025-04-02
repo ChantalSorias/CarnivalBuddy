@@ -1,0 +1,20 @@
+.carnival-card {
+    max-width: 500px;
+    height: 382px;
+}
+
+.carnival-card-description {
+    overflow-y: scroll;
+    height: 80px;
+
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+}
+
+.carnival-card-description::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar in Chrome, Safari */
+}
