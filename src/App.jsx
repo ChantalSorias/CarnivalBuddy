@@ -1,8 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import Home from './Home/Home';
-import './App.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { green, purple } from '@mui/material/colors';
+import { orange, purple } from '@mui/material/colors';
 
 const theme = createTheme({
   palette: {
@@ -10,7 +9,7 @@ const theme = createTheme({
       main: purple[900],
     },
     secondary: {
-      main: green[500],
+      main: orange["A400"],
     },
   },
 });

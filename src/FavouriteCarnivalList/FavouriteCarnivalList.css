@@ -1,0 +1,8 @@
+.fav-carnival-list-container {
+    margin-top: 5px;
+}
+
+.fav-carnival-list-box {
+    display: flex;
+    justify-content: center;
+}

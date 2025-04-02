@@ -7,7 +7,8 @@
             "2025-03-03",
             "2025-03-04"
         ],
-        "image": "src/assets/moko-jumbie.jpg"
+        "image": "src/assets/moko-jumbie.jpg",
+        "liked": true
     },
     {
         "title": "Dominica Carnival (Mas Dominik)",
@@ -17,7 +18,8 @@
             "2025-03-03",
             "2025-03-04"
         ],
-        "image": "src/assets/mas-dominik.jpg"
+        "image": "src/assets/mas-dominik.jpg",
+        "liked": false
     },
     {
         "title": "Jamaica Carnival",
@@ -26,7 +28,8 @@
         "paradeDate": [
             "2025-04-27"
         ],
-        "image": "src/assets/jamaica-carnival.jpg"
+        "image": "src/assets/jamaica-carnival.jpg",
+        "liked": false
     },
     {
         "title": "Bahamas Carnival",
@@ -35,7 +38,8 @@
         "paradeDate": [
             "2025-06-07"
         ],
-        "image": "src/assets/bahamas-carnival-junkanoo-festival-nassau.webp"
+        "image": "src/assets/bahamas-carnival-junkanoo-festival-nassau.webp",
+        "liked": false
     },
     {
         "title": "Bermuda Carnival",
@@ -44,7 +48,8 @@
         "paradeDate": [
             "2025-06-16"
         ],
-        "image": "src/assets/bermuda-carnival.jpg"
+        "image": "src/assets/bermuda-carnival.jpg",
+        "liked": false
     },
     {
         "title": "CayMAS Carnival",
@@ -53,7 +58,8 @@
         "paradeDate": [
             "2025-07-05"
         ],
-        "image": "src/assets/caymas-carnival.jpg"
+        "image": "src/assets/caymas-carnival.jpg",
+        "liked": false
     },
     {
         "title": "Vincy Mas",
@@ -63,7 +69,8 @@
             "2025-07-07",
             "2025-07-08"
         ],
-        "image": "src/assets/vincy-mas.jpg"
+        "image": "src/assets/vincy-mas.jpg",
+        "liked": false
     },
     {
         "title": "St. Lucia Carnival",
@@ -73,7 +80,8 @@
             "2025-07-21",
             "2025-07-22"
         ],
-        "image": "src/assets/st-lucia-carnival.jpg"
+        "image": "src/assets/st-lucia-carnival.jpg",
+        "liked": false
     },
     {
         "title": "Toronto Caribbean Carnival (Caribana)",
@@ -82,7 +90,8 @@
         "paradeDate": [
             "2025-08-02"
         ],
-        "image": "src/assets/toronto-caribbean-carnival.jpg"
+        "image": "src/assets/toronto-caribbean-carnival.jpg",
+        "liked": true
     },
     {
         "title": "Barbados Crop Over Festival",
@@ -91,7 +100,8 @@
         "paradeDate": [
             "2025-08-04"
         ],
-        "image": "src/assets/barbados-crop-over.jpg"
+        "image": "src/assets/barbados-crop-over.jpg",
+        "liked": false
     },
     {
         "title": "Nevis Culturama",
@@ -100,7 +110,8 @@
         "paradeDate": [
             "2025-08-05"
         ],
-        "image": "src/assets/nevis-culturama.jpg"
+        "image": "src/assets/nevis-culturama.jpg",
+        "liked": false
     },
     {
         "title": "Antigua Carnival",
@@ -110,7 +121,8 @@
             "2025-08-04",
             "2025-08-05"
         ],
-        "image": "src/assets/antigua-carnival.jpg"
+        "image": "src/assets/antigua-carnival.jpg",
+        "liked": false
     },
     {
         "title": "Grenada Spicemas",
@@ -120,7 +132,8 @@
             "2025-08-11",
             "2025-08-12"
         ],
-        "image": "src/assets/grenada-spicemas.jpg"
+        "image": "src/assets/grenada-spicemas.jpg",
+        "liked": true
     },
     {
         "title": "Notting Hill Carnival",
@@ -130,7 +143,8 @@
             "2025-08-24",
             "2025-08-25"
         ],
-        "image": "src/assets/notting-hill-carnival.jpg"
+        "image": "src/assets/notting-hill-carnival.jpg",
+        "liked": false
     },
     {
         "title": "Miami Carnival",
@@ -139,7 +153,8 @@
         "paradeDate": [
             "2025-10-12"
         ],
-        "image": "src/assets/miami-carnival.jpg"
+        "image": "src/assets/miami-carnival.jpg",
+        "liked": false
     },
     {
         "title": "West Indian American Day Carnival (New York Carnival)",
@@ -148,7 +163,8 @@
         "paradeDate": [
             "2025-09-01"
         ],
-        "image": "src/assets/ny-carnival.jpg"
+        "image": "src/assets/ny-carnival.jpg",
+        "liked": false
     },
     {
         "title": "Japan Caribbean Carnival",
@@ -158,6 +174,7 @@
             "2025-09-18",
             "2025-09-24"
         ],
-        "image": "src/assets/japan-caribbean-carnival.jpg"
+        "image": "src/assets/japan-caribbean-carnival.jpg",
+        "liked": false
     }
 ]

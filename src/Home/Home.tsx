@@ -5,6 +5,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import CarnivalList from '../CarnivalList/CarnivalList';
 import './Home.css';
+import FavouriteCarnivalList from '../FavouriteCarnivalList/FavouriteCarnivalList';
 
 export default function Home() {
     const [tabValue, setTabValue] = React.useState('one');
@@ -16,11 +17,14 @@ export default function Home() {
     const getTabComponent = () => {
         switch (tabValue) {
             case 'one': {
-                return <CarnivalList />
+                return <CarnivalList likedOnly={false} />
+            }
+            case 'two': {
+                return <FavouriteCarnivalList />
             }
 
             default: {
-                return <CarnivalList />
+                return <CarnivalList likedOnly={false} />
             }
         }
     }
@@ -32,6 +36,7 @@ export default function Home() {
                 <Tabs
                     value={tabValue}
                     onChange={handleChange}
+                    variant="fullWidth"
                 >
                     <Tab value="one" label="All Carnivals" />
                     <Tab value="two" label="Saved Carnivals" />

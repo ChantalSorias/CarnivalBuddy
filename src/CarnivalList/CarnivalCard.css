@@ -1,6 +1,5 @@
 .carnival-card {
     max-width: 500px;
-    height: 382px;
 }
 
 .carnival-card-description {
@@ -17,4 +16,8 @@
 .carnival-card-description::-webkit-scrollbar {
     display: none;
     /* Hide scrollbar in Chrome, Safari */
+}
+
+.carnival-card-actions {
+    float: right;
 }
