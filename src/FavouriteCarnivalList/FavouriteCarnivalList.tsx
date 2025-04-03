@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import carnivalListData from '../CarnivalList/CarnivalListData.json';
 import { Box, Grid } from '@mui/material';
-import CarnivalCard from '../CarnivalList/CarnivalCard';
+import CarnivalCard from '../CarnivalList/CarnivalCard/CarnivalCard';
 import './FavouriteCarnivalList.css';
 
 export default function FavouriteCarnivalList() {

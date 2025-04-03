@@ -4,7 +4,7 @@
 
 .carnival-card-description {
     overflow-y: scroll;
-    height: 80px;
+    height: 60px;
 
     /* Hide scrollbar */
     scrollbar-width: none;

@@ -7,7 +7,7 @@ import './BottomNav.css';
 
 export default function BottomNav() {
   return (
-    <Box sx={{ pb: 8 }}>
+    <Box sx={{ pb: 5 }}>
       <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }} className='bottom-nav-appbar'>
         <Toolbar className='bottom-nav-toolbar'>
           <IconButton color="inherit">

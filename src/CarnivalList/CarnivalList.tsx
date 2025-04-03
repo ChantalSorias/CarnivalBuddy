@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Box, Typography } from '@mui/material';
-import CarnivalCard from './CarnivalCard';
+import { Box, Grid, Paper, Typography } from '@mui/material';
+import CarnivalCard from './CarnivalCard/CarnivalCard';
 import carnivalListData from './CarnivalListData.json';
 import './CarnivalList.css';
 
@@ -42,8 +42,28 @@ export default function CarnivalList({ likedOnly }) {
     return (
         <div>
             <div className='carnival-list-upcoming-container'>
-                <Typography variant="h4" component="div">Upcoming Carnival...</Typography>
-                <CarnivalCard content={firstCarnival} />
+                <Box className='carnival-list-box'>
+                    <Paper
+                        elevation={6}
+                        sx={{
+                            backgroundColor: 'secondary.main',
+                            p: 3,
+                            borderRadius: 2,
+                            boxShadow: 4,
+                            mt: 3
+                        }}
+                    >
+                        <Grid container className='carnival-list-grid'>
+                            <Grid className='carnival-list-grid-item'>
+                                <Typography variant="h4" component="div" sx={{ color: 'white' }}>Upcoming Carnival...</Typography>
+                            </Grid>
+                            <Box sx={{ mr: 3, ml: 3, mb: 1 }}></Box>
+                            <Grid>
+                                <CarnivalCard content={firstCarnival} />
+                            </Grid>
+                        </Grid>
+                    </Paper>
+                </Box>
             </div>
             <div className='carnival-list-all-container'>
                 <div>
