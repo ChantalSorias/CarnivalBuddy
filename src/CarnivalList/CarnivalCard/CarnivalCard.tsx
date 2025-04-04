@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, CardActions, CardContent, CardHeader, CardMedia, IconButton, Typography } from '@mui/material';
+import { Card, CardActions, CardContent, CardMedia, Chip, Grid, IconButton, Typography } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import './CarnivalCard.css'
@@ -26,7 +26,22 @@ export default function CarnivalCard({ content }) {
                 </Typography>
             </CardContent>
             <CardActions className='carnival-card-actions'>
-                <Button size="small">Learn More</Button>
+                {content.links.length > 0 ?
+
+                    <Grid container spacing={1} wrap="wrap">
+                        {content.links.map((link, idx) => (
+                            <Grid key={idx}>
+                                <Chip
+                                    label={link.name}
+                                    component="a"
+                                    href={link.link}
+                                    color="primary"
+                                    target="_blank"
+                                    clickable
+                                    sx={{ "&:hover": { color: 'white', backgroundColor: "secondary.main" } }} />
+                            </Grid>
+                        ))}
+                    </Grid> : ""}
                 {content.liked ?
                     <IconButton aria-label="remove to favorites">
                         <FavoriteIcon />

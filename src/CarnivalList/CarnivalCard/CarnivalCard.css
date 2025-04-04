@@ -5,19 +5,15 @@
 .carnival-card-description {
     overflow-y: scroll;
     height: 60px;
-
-    /* Hide scrollbar */
     scrollbar-width: none;
-    /* Firefox */
     -ms-overflow-style: none;
-    /* IE and Edge */
 }
 
 .carnival-card-description::-webkit-scrollbar {
     display: none;
-    /* Hide scrollbar in Chrome, Safari */
 }
 
 .carnival-card-actions {
     float: right;
+    height: 75px;
 }

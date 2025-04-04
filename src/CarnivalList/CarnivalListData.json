@@ -8,7 +8,13 @@
             "2025-03-04"
         ],
         "image": "src/assets/moko-jumbie.jpg",
-        "liked": true
+        "liked": true,
+        "links": [
+            {
+                "name": "Instagram",
+                "link": "https://www.instagram.com/ncc_tt"
+            }
+        ]
     },
     {
         "title": "Dominica Carnival (Mas Dominik)",
@@ -19,7 +25,17 @@
             "2025-03-04"
         ],
         "image": "src/assets/mas-dominik.jpg",
-        "liked": false
+        "liked": false,
+        "links": [
+            {
+                "name": "Official Website",
+                "link": "https://dominicafestivals.com/the-real-mas/"
+            },
+            {
+                "name": "Instagram",
+                "link": "https://www.instagram.com/dominica.festivals/?hl=en"
+            }
+        ]
     },
     {
         "title": "Jamaica Carnival",
@@ -29,7 +45,17 @@
             "2025-04-27"
         ],
         "image": "src/assets/jamaica-carnival.jpg",
-        "liked": false
+        "liked": false,
+        "links": [
+            {
+                "name": "Official Website",
+                "link": "https://www.visitjamaica.com/carnival-in-jamaica/"
+            },
+            {
+                "name": "Instagram",
+                "link": "https://www.instagram.com/jamaicacarnival/?hl=en"
+            }
+        ]
     },
     {
         "title": "Bahamas Carnival",
@@ -39,7 +65,8 @@
             "2025-06-07"
         ],
         "image": "src/assets/bahamas-carnival-junkanoo-festival-nassau.webp",
-        "liked": false
+        "liked": false,
+        "links": []
     },
     {
         "title": "Bermuda Carnival",
@@ -49,7 +76,8 @@
             "2025-06-16"
         ],
         "image": "src/assets/bermuda-carnival.jpg",
-        "liked": false
+        "liked": false,
+        "links": []
     },
     {
         "title": "CayMAS Carnival",
@@ -59,7 +87,8 @@
             "2025-07-05"
         ],
         "image": "src/assets/caymas-carnival.jpg",
-        "liked": false
+        "liked": false,
+        "links": []
     },
     {
         "title": "Vincy Mas",
@@ -70,7 +99,8 @@
             "2025-07-08"
         ],
         "image": "src/assets/vincy-mas.jpg",
-        "liked": false
+        "liked": false,
+        "links": []
     },
     {
         "title": "St. Lucia Carnival",
@@ -81,7 +111,8 @@
             "2025-07-22"
         ],
         "image": "src/assets/st-lucia-carnival.jpg",
-        "liked": false
+        "liked": false,
+        "links": []
     },
     {
         "title": "Toronto Caribbean Carnival (Caribana)",
@@ -91,7 +122,8 @@
             "2025-08-02"
         ],
         "image": "src/assets/toronto-caribbean-carnival.jpg",
-        "liked": true
+        "liked": true,
+        "links": []
     },
     {
         "title": "Barbados Crop Over Festival",
@@ -101,7 +133,8 @@
             "2025-08-04"
         ],
         "image": "src/assets/barbados-crop-over.jpg",
-        "liked": false
+        "liked": false,
+        "links": []
     },
     {
         "title": "Nevis Culturama",
@@ -111,7 +144,8 @@
             "2025-08-05"
         ],
         "image": "src/assets/nevis-culturama.jpg",
-        "liked": false
+        "liked": false,
+        "links": []
     },
     {
         "title": "Antigua Carnival",
@@ -122,7 +156,8 @@
             "2025-08-05"
         ],
         "image": "src/assets/antigua-carnival.jpg",
-        "liked": false
+        "liked": false,
+        "links": []
     },
     {
         "title": "Grenada Spicemas",
@@ -133,7 +168,8 @@
             "2025-08-12"
         ],
         "image": "src/assets/grenada-spicemas.jpg",
-        "liked": true
+        "liked": true,
+        "links": []
     },
     {
         "title": "Notting Hill Carnival",
@@ -144,7 +180,8 @@
             "2025-08-25"
         ],
         "image": "src/assets/notting-hill-carnival.jpg",
-        "liked": false
+        "liked": false,
+        "links": []
     },
     {
         "title": "Miami Carnival",
@@ -154,7 +191,8 @@
             "2025-10-12"
         ],
         "image": "src/assets/miami-carnival.jpg",
-        "liked": false
+        "liked": false,
+        "links": []
     },
     {
         "title": "West Indian American Day Carnival (New York Carnival)",
@@ -164,7 +202,8 @@
             "2025-09-01"
         ],
         "image": "src/assets/ny-carnival.jpg",
-        "liked": false
+        "liked": false,
+        "links": []
     },
     {
         "title": "Japan Caribbean Carnival",
@@ -175,6 +214,7 @@
             "2025-09-24"
         ],
         "image": "src/assets/japan-caribbean-carnival.jpg",
-        "liked": false
+        "liked": false,
+        "links": []
     }
 ]
