@@ -1,5 +1,6 @@
 .carnival-card {
-    max-width: 500px;
+    max-width: 550px;
+    max-height: 415px;
 }
 
 .carnival-card-description {
@@ -16,4 +17,8 @@
 .carnival-card-actions {
     float: right;
     height: 75px;
+}
+
+.css-1lt5qva-MuiCardContent-root {
+    padding-bottom: 0px !important;
 }

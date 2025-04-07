@@ -47,17 +47,17 @@ export default function CarnivalList({ likedOnly }) {
                         elevation={6}
                         sx={{
                             backgroundColor: 'secondary.main',
-                            p: 3,
+                            p: 1,
                             borderRadius: 2,
                             boxShadow: 4,
-                            mt: 3
+                            mt: 1
                         }}
                     >
                         <Grid container className='carnival-list-grid'>
                             <Grid className='carnival-list-grid-item'>
                                 <Typography variant="h4" component="div" sx={{ color: 'white' }}>Upcoming Carnival...</Typography>
                             </Grid>
-                            <Box sx={{ mr: 3, ml: 3, mb: 1 }}></Box>
+                            <Box sx={{ mr: 2, ml: 2, mb: 1 }}></Box>
                             <Grid>
                                 <CarnivalCard content={firstCarnival} />
                             </Grid>

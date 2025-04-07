@@ -7,7 +7,7 @@ import './TopBar.css';
 export default function TopBar() {
     const [auth, setAuth] = React.useState(true);
     return (
-        <Box sx={{ pt: 8 }}>
+        <Box sx={{ pt: 4 }}>
             <AppBar position="fixed" className='topbar-appbar'>
                 <Toolbar className='topbar-toolbar'>
                     {auth && (

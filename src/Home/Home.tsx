@@ -1,6 +1,5 @@
 import React from 'react';
-import TopBar from '../TopBar/TopBar';
-import BottomNav from '../BottomNav/BottomNav';
+import Layout from '../Layout/Layout';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import CarnivalList from '../CarnivalList/CarnivalList';
@@ -30,8 +29,7 @@ export default function Home() {
     }
 
     return (
-        <div>
-            <TopBar />
+        <Layout>
             <div className='home-content-container'>
                 <Tabs
                     value={tabValue}
@@ -45,7 +43,6 @@ export default function Home() {
                     {getTabComponent()}
                 </div>
             </div>
-            <BottomNav />
-        </div>
+        </Layout>
     );
 }
