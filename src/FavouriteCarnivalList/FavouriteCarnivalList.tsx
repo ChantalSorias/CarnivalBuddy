@@ -8,7 +8,7 @@ export default function FavouriteCarnivalList() {
     const sortedCarnivals = useMemo(() => {
         return carnivalListData
             .filter(carnival => carnival.liked)
-            .sort((a, b) => new Date(a.paradeDate[0]).getTime() - new Date(b.paradeDate[0]).getTime());
+            .sort((a, b) => new Date(a.paradeDates[0]).getTime() - new Date(b.paradeDates[0]).getTime());
     }, []);
 
     return (

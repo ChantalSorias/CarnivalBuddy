@@ -3,7 +3,7 @@
         "title": "Trinidad & Tobago Carnival",
         "description": "Trinidad and Tobago Carnival is a vibrant, two-day celebration held the Monday and Tuesday before Ash Wednesday, known for its colorful parades, elaborate costumes, and energetic music like soca and steelpan, making it a major cultural event and tourist draw.",
         "location": "Port of Spain, Trinidad",
-        "paradeDate": [
+        "paradeDates": [
             "2025-03-03",
             "2025-03-04"
         ],
@@ -12,7 +12,7 @@
         "links": [
             {
                 "name": "Instagram",
-                "link": "https://www.instagram.com/ncc_tt"
+                "url": "https://www.instagram.com/ncc_tt"
             }
         ]
     },
@@ -20,7 +20,7 @@
         "title": "Dominica Carnival (Mas Dominik)",
         "description": "Dominica's Carnival, known as \"Mas Domnik\" or \"The Real Mas,\" is a vibrant pre-Lenten celebration with African and French roots, featuring lively parades, music, costumes, and street revelry, culminating in a unique cultural experience. Dominica's Carnival, known as \"Mas Domnik\" or \"The Real Mas,\" is a vibrant pre-Lenten celebration with African and French roots, featuring lively parades, music, costumes, and street revelry, culminating in a unique cultural experience.",
         "location": "Roseau, Dominica",
-        "paradeDate": [
+        "paradeDates": [
             "2025-03-03",
             "2025-03-04"
         ],
@@ -29,11 +29,11 @@
         "links": [
             {
                 "name": "Official Website",
-                "link": "https://dominicafestivals.com/the-real-mas/"
+                "url": "https://dominicafestivals.com/the-real-mas/"
             },
             {
                 "name": "Instagram",
-                "link": "https://www.instagram.com/dominica.festivals/?hl=en"
+                "url": "https://www.instagram.com/dominica.festivals/?hl=en"
             }
         ]
     },
@@ -41,7 +41,7 @@
         "title": "Jamaica Carnival",
         "description": "Jamaica Carnival is a vibrant, week-long celebration after Easter, featuring parades, parties, dancing, music, and elaborate costumes, drawing both locals and tourists to cities like Kingston, Ocho Rios, and Montego Bay.",
         "location": "Kingston, Jamaica",
-        "paradeDate": [
+        "paradeDates": [
             "2025-04-27"
         ],
         "image": "src/assets/jamaica-carnival.jpg",
@@ -49,11 +49,11 @@
         "links": [
             {
                 "name": "Official Website",
-                "link": "https://www.visitjamaica.com/carnival-in-jamaica/"
+                "url": "https://www.visitjamaica.com/carnival-in-jamaica/"
             },
             {
                 "name": "Instagram",
-                "link": "https://www.instagram.com/jamaicacarnival/?hl=en"
+                "url": "https://www.instagram.com/jamaicacarnival/?hl=en"
             }
         ]
     },
@@ -61,7 +61,7 @@
         "title": "Bahamas Carnival",
         "description": "Bahamas Carnival is a vibrant celebration featuring colorful parades, music, and dance, culminating in a grand parade in Nassau.",
         "location": "Nassau, Bahamas",
-        "paradeDate": [
+        "paradeDates": [
             "2025-06-07"
         ],
         "image": "src/assets/bahamas-carnival-junkanoo-festival-nassau.webp",
@@ -72,7 +72,7 @@
         "title": "Bermuda Carnival",
         "description": "Bermuda Carnival, also known as 'Carnival in Bermuda,' is an annual event featuring lively parades, soca music, and cultural performances.",
         "location": "Hamilton, Bermuda",
-        "paradeDate": [
+        "paradeDates": [
             "2025-06-16"
         ],
         "image": "src/assets/bermuda-carnival.jpg",
@@ -83,7 +83,7 @@
         "title": "CayMAS Carnival",
         "description": "CayMAS Carnival in the Cayman Islands offers a spectacular display of costumes, music, and dance, celebrating Caribbean culture.",
         "location": "George Town, Grand Cayman",
-        "paradeDate": [
+        "paradeDates": [
             "2025-07-05"
         ],
         "image": "src/assets/caymas-carnival.jpg",
@@ -94,7 +94,7 @@
         "title": "Vincy Mas",
         "description": "St. Vincent's Carnival, known as Vincy Mas, is a lively festival featuring calypso competitions, street parties, and a grand parade.",
         "location": "Kingstown, St. Vincent",
-        "paradeDate": [
+        "paradeDates": [
             "2025-07-07",
             "2025-07-08"
         ],
@@ -106,7 +106,7 @@
         "title": "St. Lucia Carnival",
         "description": "St. Lucia Carnival is a vibrant celebration with music, dance, and elaborate costumes, culminating in a two-day parade.",
         "location": "Gros Islet, St. Lucia",
-        "paradeDate": [
+        "paradeDates": [
             "2025-07-21",
             "2025-07-22"
         ],
@@ -118,7 +118,7 @@
         "title": "Toronto Caribbean Carnival (Caribana)",
         "description": "North America's largest Caribbean carnival, Caribana features a grand parade with elaborate costumes, music, and cultural performances.",
         "location": "Toronto, Canada",
-        "paradeDate": [
+        "paradeDates": [
             "2025-08-02"
         ],
         "image": "src/assets/toronto-caribbean-carnival.jpg",
@@ -129,7 +129,7 @@
         "title": "Barbados Crop Over Festival",
         "description": "Barbados' Crop Over Festival is a traditional harvest celebration featuring music, dance, and the Grand Kadooment parade.",
         "location": "Bridgetown, Barbados",
-        "paradeDate": [
+        "paradeDates": [
             "2025-08-04"
         ],
         "image": "src/assets/barbados-crop-over.jpg",
@@ -140,7 +140,7 @@
         "title": "Nevis Culturama",
         "description": "Nevis Culturama is a cultural festival celebrating the island's heritage with music, dance, and a colorful parade.",
         "location": "Charlestown, Nevis",
-        "paradeDate": [
+        "paradeDates": [
             "2025-08-05"
         ],
         "image": "src/assets/nevis-culturama.jpg",
@@ -151,7 +151,7 @@
         "title": "Antigua Carnival",
         "description": "Antigua's Carnival is a ten-day festival featuring parades, music, and cultural performances, celebrating the emancipation of slavery.",
         "location": "St. John's, Antigua",
-        "paradeDate": [
+        "paradeDates": [
             "2025-08-04",
             "2025-08-05"
         ],
@@ -163,7 +163,7 @@
         "title": "Grenada Spicemas",
         "description": "Grenada's Spicemas is a vibrant carnival featuring traditional Jab Jab, soca music, and a colorful parade.",
         "location": "St. George's, Grenada",
-        "paradeDate": [
+        "paradeDates": [
             "2025-08-11",
             "2025-08-12"
         ],
@@ -175,7 +175,7 @@
         "title": "Notting Hill Carnival",
         "description": "Notting Hill Carnival is the largest street festival in Europe, celebrating Caribbean culture with music, dance, and vibrant parades.",
         "location": "London, England",
-        "paradeDate": [
+        "paradeDates": [
             "2025-08-24",
             "2025-08-25"
         ],
@@ -187,7 +187,7 @@
         "title": "Miami Carnival",
         "description": "Miami Carnival is an exciting Caribbean festival featuring a grand parade, vibrant costumes, and soca and calypso music.",
         "location": "Miami, Florida, USA",
-        "paradeDate": [
+        "paradeDates": [
             "2025-10-12"
         ],
         "image": "src/assets/miami-carnival.jpg",
@@ -198,7 +198,7 @@
         "title": "West Indian American Day Carnival (New York Carnival)",
         "description": "The West Indian American Day Carnival, also known as the New York Carnival or Labor Day Parade, is a vibrant celebration of Caribbean culture featuring colorful parades, music, and dance along Eastern Parkway in Brooklyn.",
         "location": "Brooklyn, New York, USA",
-        "paradeDate": [
+        "paradeDates": [
             "2025-09-01"
         ],
         "image": "src/assets/ny-carnival.jpg",
@@ -209,7 +209,7 @@
         "title": "Japan Caribbean Carnival",
         "description": "The Japan Caribbean Carnival is a lively event celebrating Caribbean culture in Japan, featuring soca music, dance, and cultural performances.",
         "location": "Tokyo-Kanto, Japan",
-        "paradeDate": [
+        "paradeDates": [
             "2025-09-18",
             "2025-09-24"
         ],

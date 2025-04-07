@@ -13,7 +13,7 @@ export default function CarnivalList({ likedOnly }) {
             : [...carnivalListData];
 
         return filteredList.sort(
-            (a, b) => new Date(a.paradeDate[0]).getTime() - new Date(b.paradeDate[0]).getTime()
+            (a, b) => new Date(a.paradeDates[0]).getTime() - new Date(b.paradeDates[0]).getTime()
         );
     }, [likedOnly]);
 
