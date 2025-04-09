@@ -7,11 +7,12 @@ import './TopBar.css';
 export default function TopBar() {
     const [auth, setAuth] = React.useState(true);
     return (
-        <Box sx={{ pt: 4 }}>
+        <Box sx={{ pt: 6 }}>
             <AppBar position="fixed" className='topbar-appbar'>
                 <Toolbar className='topbar-toolbar'>
-                    {auth && (
-                        <div>
+                    <Typography variant="h6" component="div">Carnival Buddy</Typography>
+                    <div>
+                        {auth && (
                             <IconButton
                                 size="large"
                                 aria-label="account of current user"
@@ -19,16 +20,15 @@ export default function TopBar() {
                             >
                                 <AccountCircle />
                             </IconButton>
-                        </div>
-                    )}
-                    <Typography variant="h6" component="div">Carnival Buddy</Typography>
-                    <IconButton
-                        size="large"
-                        aria-label="notifications"
-                        color="inherit"
-                    >
-                        <NotificationsIcon />
-                    </IconButton>
+                        )}
+                        <IconButton
+                            size="large"
+                            aria-label="notifications"
+                            color="inherit"
+                        >
+                            <NotificationsIcon />
+                        </IconButton>
+                    </div>
                 </Toolbar>
             </AppBar>
         </Box>

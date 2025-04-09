@@ -1,11 +1,11 @@
-.carnival-list-upcoming-container {
+.carnival-list-next-container {
     display: flex;
     margin-bottom: 5px;
     justify-content: center;
 }
 
 .carnival-list-all-title {
-    text-align: center;
+    font-weight: bolder;
 }
 
 .react-multi-carousel-list {
@@ -22,4 +22,8 @@
 .carnival-list-grid-item {
     display: flex;
     align-items: center;
+}
+
+.carnival-list-upcoming-container {
+    margin: 10px;
 }
