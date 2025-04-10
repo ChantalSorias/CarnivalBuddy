@@ -3,6 +3,7 @@ import Home from './Home/Home';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { orange, purple } from '@mui/material/colors';
 import Admin from './Admin/Admin';
+import Feed from './Feed/Feed';
 
 const theme = createTheme({
   palette: {
@@ -20,6 +21,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/feed' element={<Feed />} />
         <Route path='/admin' element={<Admin />} />
       </Routes>
     </ThemeProvider>

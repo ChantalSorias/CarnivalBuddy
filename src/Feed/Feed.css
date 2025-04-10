@@ -1,0 +1,8 @@
+.feed-add-post {
+    max-width: 500px;
+    width: 100%;
+}
+
+.feed-add-post-input-field {
+    flex: 1;
+}

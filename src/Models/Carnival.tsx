@@ -1,4 +1,4 @@
-type Carnival = {
+export type Carnival = {
     id: string,
     title: string,
     description: string,

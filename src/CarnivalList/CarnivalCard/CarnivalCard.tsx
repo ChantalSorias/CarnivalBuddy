@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardActions, CardContent, CardMedia, Chip, Grid, IconButton, Typography } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { formatToLocalDate } from '../../utils/dateUtils';
 import './CarnivalCard.css'
 
 export default function CarnivalCard({ content }) {
@@ -20,7 +21,7 @@ export default function CarnivalCard({ content }) {
                 <Typography variant="h5" component="div">
                     {content.title}
                 </Typography>
-                <Typography sx={{ color: 'text.secondary', mb: 0.5 }}>{content.paradeDates?.join(" - ")}</Typography>
+                <Typography sx={{ color: 'text.secondary', mb: 0.5 }}>{content.paradeDates?.map(date => formatToLocalDate(date)).join(" - ")}</Typography>
                 <Typography variant="body2" sx={{ color: 'text.secondary' }} className='carnival-card-description'>
                     {content.description}
                 </Typography>

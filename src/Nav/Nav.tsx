@@ -11,7 +11,7 @@ export default function Nav({ isDesktop, drawerWidth, toolbarHeight }) {
 
   const navItems = [
     { label: 'Home', icon: <HomeIcon />, route: "/" },
-    { label: 'Feed', icon: <FeedIcon />, route: "/" },
+    { label: 'Feed', icon: <FeedIcon />, route: "/feed" },
     { label: 'Chats', icon: <ChatIcon />, route: "/" }
   ];
 

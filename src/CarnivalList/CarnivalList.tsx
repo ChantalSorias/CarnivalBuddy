@@ -4,6 +4,7 @@ import 'react-multi-carousel/lib/styles.css';
 import { Box, Button, Grid, Paper, Typography } from '@mui/material';
 import CarnivalCard from './CarnivalCard/CarnivalCard';
 import carnivalListData from './CarnivalListData.json';
+import { Carnival } from '../Models/Carnival';
 import './CarnivalList.css';
 
 export default function CarnivalList({ likedOnly }) {

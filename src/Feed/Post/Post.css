@@ -1,0 +1,16 @@
+.post-card {
+    max-width: 500px;
+}
+
+.post-comment {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-comment-text-field {
+    flex: 1;
+}
+
+.post-actions {
+    float: right;
+}

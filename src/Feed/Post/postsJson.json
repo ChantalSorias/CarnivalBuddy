@@ -1,0 +1,295 @@
+[
+    {
+        "id": 1,
+        "user": {
+            "firstName": "Alyson",
+            "lastName": "Peters",
+            "fullName": "Alyson Peters",
+            "username": "Aly P",
+            "image": ""
+        },
+        "createdAt": "2025-04-07T14:30:00Z",
+        "image": "src/assets/default-carnival-image.jpg",
+        "text": "This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.",
+        "likes": [],
+        "comments": [
+            {
+                "user": {
+                    "firstName": "Alyson",
+                    "lastName": "Peters",
+                    "fullName": "Alyson Peters",
+                    "username": "Aly P",
+                    "image": ""
+                },
+                "text": "Omg this is awesome!",
+                "createdAt": "2025-04-07T14:30:00Z"
+            },
+            {
+                "user": {
+                    "firstName": "Alyson",
+                    "lastName": "Peters",
+                    "fullName": "Alyson Peters",
+                    "username": "Aly P",
+                    "image": ""
+                },
+                "text": "Nice post!",
+                "createdAt": "2025-04-07T14:30:00Z"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "user": {
+            "firstName": "Alyson",
+            "lastName": "Peters",
+            "fullName": "Alyson Peters",
+            "username": "Aly P",
+            "image": "src/assets/placeholder-image.svg"
+        },
+        "createdAt": "2025-04-07T14:30:00Z",
+        "image": null,
+        "text": "This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.",
+        "likes": [],
+        "comments": [
+            {
+                "user": {
+                    "firstName": "Alyson",
+                    "lastName": "Peters",
+                    "fullName": "Alyson Peters",
+                    "username": "Aly P",
+                    "image": ""
+                },
+                "text": "Nice post!",
+                "createdAt": "2025-04-07T14:30:00Z"
+            },
+            {
+                "user": {
+                    "firstName": "Alyson",
+                    "lastName": "Peters",
+                    "fullName": "Alyson Peters",
+                    "username": "Aly P",
+                    "image": ""
+                },
+                "text": "I'll be visiting Trinidad for about 3 weeks. I would love to meet some people when I am there. I am going to DM you",
+                "createdAt": "2025-04-07T14:30:00Z"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "user": {
+            "firstName": "Alyson",
+            "lastName": "Peters",
+            "fullName": "Alyson Peters",
+            "username": "Aly P",
+            "image": "src/assets/placeholder-image.svg"
+        },
+        "createdAt": "2025-04-07T14:30:00Z",
+        "image": "src/assets/default-carnival-image.jpg",
+        "text": "This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.",
+        "likes": [],
+        "comments": [
+            {
+                "user": {
+                    "firstName": "Alyson",
+                    "lastName": "Peters",
+                    "fullName": "Alyson Peters",
+                    "username": "Aly P",
+                    "image": ""
+                },
+                "text": "Nice post!",
+                "createdAt": "2025-04-07T14:30:00Z"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "user": {
+            "firstName": "Alyson",
+            "lastName": "Peters",
+            "fullName": "Alyson Peters",
+            "username": "Aly P",
+            "image": "src/assets/placeholder-image.svg"
+        },
+        "createdAt": "2025-04-07T14:30:00Z",
+        "image": null,
+        "text": "This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.",
+        "likes": [],
+        "comments": [
+            {
+                "user": {
+                    "firstName": "Alyson",
+                    "lastName": "Peters",
+                    "fullName": "Alyson Peters",
+                    "username": "Aly P",
+                    "image": ""
+                },
+                "text": "Nice post!",
+                "createdAt": "2025-04-07T14:30:00Z"
+            },
+            {
+                "user": {
+                    "firstName": "Alyson",
+                    "lastName": "Peters",
+                    "fullName": "Alyson Peters",
+                    "username": "Aly P",
+                    "image": ""
+                },
+                "text": "I'll be visiting Trinidad for about 3 weeks. I would love to meet some people when I am there. I am going to DM you",
+                "createdAt": "2025-04-07T14:30:00Z"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "user": {
+            "firstName": "Alyson",
+            "lastName": "Peters",
+            "fullName": "Alyson Peters",
+            "username": "Aly P",
+            "image": "src/assets/placeholder-image.svg"
+        },
+        "createdAt": "2025-04-07T14:30:00Z",
+        "image": null,
+        "text": "This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.",
+        "likes": [],
+        "comments": [
+            {
+                "user": {
+                    "firstName": "Alyson",
+                    "lastName": "Peters",
+                    "fullName": "Alyson Peters",
+                    "username": "Aly P",
+                    "image": ""
+                },
+                "text": "Nice post!",
+                "createdAt": "2025-04-07T14:30:00Z"
+            },
+            {
+                "user": {
+                    "firstName": "Alyson",
+                    "lastName": "Peters",
+                    "fullName": "Alyson Peters",
+                    "username": "Aly P",
+                    "image": ""
+                },
+                "text": "I'll be visiting Trinidad for about 3 weeks. I would love to meet some people when I am there. I am going to DM you",
+                "createdAt": "2025-04-07T14:30:00Z"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "user": {
+            "firstName": "Alyson",
+            "lastName": "Peters",
+            "fullName": "Alyson Peters",
+            "username": "Aly P",
+            "image": "src/assets/placeholder-image.svg"
+        },
+        "createdAt": "2025-04-07T14:30:00Z",
+        "image": null,
+        "text": "This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.his impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.",
+        "likes": [],
+        "comments": [
+            {
+                "user": {
+                    "firstName": "Alyson",
+                    "lastName": "Peters",
+                    "fullName": "Alyson Peters",
+                    "username": "Aly P",
+                    "image": ""
+                },
+                "text": "Nice post!",
+                "createdAt": "2025-04-07T14:30:00Z"
+            },
+            {
+                "user": {
+                    "firstName": "Alyson",
+                    "lastName": "Peters",
+                    "fullName": "Alyson Peters",
+                    "username": "Aly P",
+                    "image": ""
+                },
+                "text": "I'll be visiting Trinidad for about 3 weeks. I would love to meet some people when I am there. I am going to DM you",
+                "createdAt": "2025-04-07T14:30:00Z"
+            }
+        ]
+    },
+    {
+        "id": 2,
+        "user": {
+            "firstName": "Alyson",
+            "lastName": "Peters",
+            "fullName": "Alyson Peters",
+            "username": "Aly P",
+            "image": "src/assets/placeholder-image.svg"
+        },
+        "createdAt": "2025-04-07T14:30:00Z",
+        "image": null,
+        "text": "This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.",
+        "likes": [],
+        "comments": [
+            {
+                "user": {
+                    "firstName": "Alyson",
+                    "lastName": "Peters",
+                    "fullName": "Alyson Peters",
+                    "username": "Aly P",
+                    "image": ""
+                },
+                "text": "Nice post!",
+                "createdAt": "2025-04-07T14:30:00Z"
+            },
+            {
+                "user": {
+                    "firstName": "Alyson",
+                    "lastName": "Peters",
+                    "fullName": "Alyson Peters",
+                    "username": "Aly P",
+                    "image": ""
+                },
+                "text": "I'll be visiting Trinidad for about 3 weeks. I would love to meet some people when I am there. I am going to DM you",
+                "createdAt": "2025-04-07T14:30:00Z"
+            }
+        ]
+    },
+    {
+        "id": 1,
+        "user": {
+            "firstName": "Alyson",
+            "lastName": "Peters",
+            "fullName": "Alyson Peters",
+            "username": "Aly P",
+            "image": ""
+        },
+        "createdAt": "2025-04-07T14:30:00Z",
+        "image": "src/assets/default-carnival-image.jpg",
+        "text": "This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.",
+        "likes": [],
+        "comments": [
+            {
+                "user": {
+                    "firstName": "Alyson",
+                    "lastName": "Peters",
+                    "fullName": "Alyson Peters",
+                    "username": "Aly P",
+                    "image": ""
+                },
+                "text": "Omg this is awesome!",
+                "createdAt": "2025-04-07T14:30:00Z"
+            },
+            {
+                "user": {
+                    "firstName": "Alyson",
+                    "lastName": "Peters",
+                    "fullName": "Alyson Peters",
+                    "username": "Aly P",
+                    "image": ""
+                },
+                "text": "Nice post!",
+                "createdAt": "2025-04-07T14:30:00Z"
+            }
+        ]
+    }
+]
