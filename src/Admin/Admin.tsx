@@ -5,6 +5,7 @@ import axios from '../config/axiosInstance';
 import Layout from '../Layout/Layout';
 import SimpleDialog from '../SimpleDialog/SimpleDialog';
 import './Admin.css';
+import { Carnival } from '../Models/Carnival';
 
 const columns: GridColDef[] = [
   { field: 'title', headerName: 'Title', width: 200, editable: true },

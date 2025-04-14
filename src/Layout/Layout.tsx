@@ -16,13 +16,14 @@ export default function Layout({ children }) {
             <Box
                 component="main"
                 sx={{
-                    flexGrow: 1,
+                    display: 'flex',
+                    flexDirection: 'column',
                     ml: isDesktop ? `${drawerWidth}px` : "",
-                    p: 1,
+                    height: '100vh',
                 }}
             >
                 <TopBar />
-                <div className='layout-children-container'>{children}</div>
+                <Box className='layout-children-container' sx={{ flexGrow: 1, overflow: 'auto', p: 0 }}>{children}</Box>
                 <Nav isDesktop={isDesktop} drawerWidth={drawerWidth} toolbarHeight={toolbarHeight} />
             </Box>
         </>

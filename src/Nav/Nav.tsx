@@ -74,7 +74,7 @@ export default function Nav({ isDesktop, drawerWidth, toolbarHeight }) {
     }
 
     return (
-      <Box sx={{ pb: 5 }}>
+      <Box sx={{ pb: 8 }}>
         <AppBar position="fixed" color="primary" sx={{ top: 'auto', bottom: 0 }} className='bottom-nav-appbar'>
           <Toolbar className='bottom-nav-toolbar'>
             {navItems.map((item, index) => (
