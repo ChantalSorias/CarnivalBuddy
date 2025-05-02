@@ -1,26 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Layout from '../Layout/Layout';
 import { Button, Grid, Typography } from '@mui/material';
-import axios from 'axios';
 import { useGoogleLogin } from '@react-oauth/google';
 import { GENERAL } from '../constants/general';
 import { useNavigate } from 'react-router-dom';
+import { getUserByGoogleId } from '../services/userService';
+import { DecodedToken, useAuth } from '../context/AuthContext';
+import { jwtDecode } from 'jwt-decode';
 
 
 export default function LogIn() {
-    const [user, setUser] = useState();
     const navigate = useNavigate();
-
-
-    const handleLogin = async (user) => {
-        try {
-            const res = await axios.post('/users', user);
-            setUser(res.data);
-            console.log(user);
-        } catch (error) {
-            console.error('Failed to login:', error);
-        }
-    };
 
     return (
         <>
@@ -33,8 +23,7 @@ export default function LogIn() {
                         <Typography variant="h4" sx={{ color: 'primary.main', pb: 3 }}>Log in to Your Account</Typography>
                         <GoogleLoginButton />
                         <Typography variant="body1" sx={{ pt: 8 }}>Don't have an account?</Typography>
-                        <Button variant='outlined' onClick={() => navigate('/signup')}>Sign Up</Button>
-                        {/* <GoogleSignUpButton /> */}
+                        <GoogleSignUpButton />
                     </Grid>
 
                 </Grid>
@@ -44,10 +33,23 @@ export default function LogIn() {
 }
 
 export const GoogleLoginButton = () => {
+    const navigate = useNavigate();
+    const { setCurrentUser } = useAuth();
+
     const login = useGoogleLogin({
-        onSuccess: credentialResponse => {
-            console.log(credentialResponse); // contains JWT token
-            // send token to backend to verify and save to MongoDB
+        onSuccess: async credentialResponse => {
+            const googleProfile = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+                headers: { Authorization: `Bearer ${credentialResponse.access_token}` }
+            })
+            .then(res => res.json());
+            
+            var userData = await getUserByGoogleId(googleProfile.sub);
+            var token = userData.token;
+
+            localStorage.setItem('token', token);
+            const decoded: DecodedToken = jwtDecode(token);
+            setCurrentUser(decoded);
+            navigate('/');
         },
         onError: () => {
             console.log('Login Failed');
@@ -55,25 +57,33 @@ export const GoogleLoginButton = () => {
     })
 
     return (
-        <Button variant='contained'>Login With Google</Button>
+        <Button variant='contained' onClick={() => login()}>Login With Google</Button>
     )
 }
 
 export const GoogleSignUpButton = () => {
     const navigate = useNavigate();
-    navigate('/signup');
-    // const login = useGoogleLogin({
-    //     onSuccess: credentialResponse => {
-    //         console.log(credentialResponse); // contains JWT token
-    //         // send token to your backend to verify and save to MongoDB
-    //         navigate('/signup');
-    //     },
-    //     onError: () => {
-    //         console.log('Sign up Failed');
-    //     }
-    // })
+    const signup = useGoogleLogin({
+        onSuccess: async credentialResponse => {
+            const googleProfile = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+                headers: { Authorization: `Bearer ${credentialResponse.access_token}` }
+            })
+            .then(res => res.json());
+            
+            const googleUser = {
+                sub: googleProfile.sub,
+                email: googleProfile.email,
+                name: googleProfile.name
+              };
+            localStorage.setItem("googleUser", JSON.stringify(googleUser));
+            navigate('/signup');
+        },
+        onError: () => {
+            console.log('Login Failed');
+        }
+    })
 
     return (
-        <Button variant='outlined'>Sign Up With Google</Button>
+        <Button variant='outlined' onClick={() => signup()}>Sign Up With Google</Button>
     )
 }

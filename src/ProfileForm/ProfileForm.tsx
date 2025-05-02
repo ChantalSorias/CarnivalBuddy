@@ -2,17 +2,22 @@ import { Autocomplete, Avatar, Box, Button, Grid, IconButton, TextField, Typogra
 import React, { useEffect, useRef, useState } from 'react';
 import Layout from '../Layout/Layout';
 import EditIcon from '@mui/icons-material/Edit';
-import Resizer from 'react-image-file-resizer';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import { countries } from '../Models/Country';
 import SnackbarAlert from '../ReusableComponents/SnackBarAlert/SnackBarAlert';
 import { User } from '../Models/User';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { createUser, editUser, getUserById } from '../services/userService';
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode';
+import { DecodedToken, useAuth } from '../context/AuthContext';
 
-export default function CreateProfile() {
+export default function ProfileForm() {
+    const MAX_PROFILE_IMAGES = 3;
     const fileInputRef = React.useRef<HTMLInputElement>(null);
     const [imageUrl, setImageUrl] = useState<string>('');
-    const [profileImages, setProfileImages] = useState<(string)[]>(['', '', '']);
+    const [profileImages, setProfileImages] = useState<(string)[]>(Array(MAX_PROFILE_IMAGES).fill(""));
     const fileInputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
     const countryOptions = Object.values(countries).map((country) => ({
@@ -22,9 +27,14 @@ export default function CreateProfile() {
 
     const [openSnackBar, setOpenSnackBar] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
+    const [snackbarSeverity, setSnackbarSeverity] = useState('error');
 
+    const storedUser = JSON.parse(localStorage.getItem("googleUser") || '{}');
     const [formData, setFormData] = useState<User>({
-        image: null,
+        id: "",
+        googleId: storedUser.sub,
+        email: storedUser.email,
+        image: "",
         username: '',
         location: '',
         background: [],
@@ -39,12 +49,13 @@ export default function CreateProfile() {
         username: false,
         location: false,
         background: false,
-        favouriteSong: { name: false, artist: false }
+        favouriteSong: { name: false, artist: false },
+        bio: false
     });
 
     const handleChange = (e) => {
         const { name, value, files } = e.target;
-        if (name === "image") {
+        if (name === "image" && files[0]) {
             const file = files[0];
             if (fileSizeIsValid(file)) {
                 setImageUrl(URL.createObjectURL(file));
@@ -59,13 +70,6 @@ export default function CreateProfile() {
                     [keys[1]]: value,
                 },
             }));
-            // setErrors(prev => ({
-            //     ...prev,
-            //     [keys[0]]: {
-            //         ...prev[keys[0]],
-            //         [keys[1]]: false,
-            //     },
-            // }));
             setErrors(prev => ({ ...prev, [name]: false }));
         } else {
             setFormData(prev => ({ ...prev, [name]: value }));
@@ -73,21 +77,25 @@ export default function CreateProfile() {
         }
     };
 
-    const handleSubmit = (e) => {
+    const navigate = useNavigate();
+    const { setCurrentUser } = useAuth();
+    
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         const newErrors = {
-            image: !formData.image,
+            image: !formData.image.trim(),
             username: !formData.username.trim(),
             location: !formData.location.trim(),
             background: formData.background.length === 0,
             favouriteSong: { name: !formData.favouriteSong.name.trim(), artist: !formData.favouriteSong.artist.trim() },
+            bio: !formData.bio.trim(),
         };
 
         setErrors(newErrors);
 
         const hasErrors = Object.values(newErrors).some(err => {
-            if (typeof err === 'string') return !!err;
+            if (typeof err === 'boolean') return !!err;
             if (typeof err === 'object' && err !== null) {
                 return Object.values(err).some(nestedErr => !!nestedErr);
             }
@@ -96,11 +104,50 @@ export default function CreateProfile() {
 
         if (hasErrors) return;
 
-        // Submit your form here
-        console.log('Form submitted:', formData);
+        try {
+            var message = "Profile successfully updated.";
+
+            if (editMode) {
+                await editUser(formData);
+                navigate(`/profile/${currentUser!.username}`);
+            }
+            else {
+                var response = await createUser(formData);
+                message = "Profile successfully created.";
+
+                var token = response.token;
+                localStorage.setItem('token', token);
+                const decoded: DecodedToken = jwtDecode(token);
+                setCurrentUser(decoded);
+                navigate('/');
+            }
+
+            setSnackbarMessage(message);
+                setSnackbarSeverity('success');
+                setOpenSnackBar(true);
+        }
+        catch(error) {
+            var message = "Failed to create profile."
+            
+            if (axios.isAxiosError(error)) {
+                if (error.response?.status === 401) {
+                    message = "Unauthorized.";
+                } else if (error.response?.status === 403) {
+                    message = "Forbidden.";
+                } else if (error.response?.status === 404) {
+                    message = "User not found.";
+                } else {
+                    if (editMode) {
+                        message = "Failed to edit profile.";
+                    }
+                }
+            }
+
+            setSnackbarMessage(message);
+            setSnackbarSeverity('error');
+            setOpenSnackBar(true);
+        }
     };
-
-
 
     useEffect(() => {
         return () => {
@@ -114,6 +161,7 @@ export default function CreateProfile() {
     const fileSizeIsValid = (file) => {
         if (file && file.size > 1.5 * 1024 * 1024) {
             setSnackbarMessage("File size is too large. Please select a file smaller than 1.5MB.");
+            setSnackbarSeverity('error');
             setOpenSnackBar(true);
             return false;
         }
@@ -151,6 +199,40 @@ export default function CreateProfile() {
         setOpenSnackBar(false);
     };
 
+    // Edit Mode
+    const location = useLocation();
+    const [editMode, setEditMode] = useState<boolean>(location.pathname.includes('edit'));
+
+    useEffect(() => {
+        if (editMode) {
+            fetchUser();
+        }
+        }, []);
+
+        const { currentUser } = useAuth();
+    
+        const fetchUser = async () => {
+            try {
+                if (!currentUser) {
+                    navigate("/login");
+                  } else {
+                    var user = await getUserById(currentUser["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]);
+                    setFormData(user);
+                    setImageUrl(user.image);
+                    setProfileImages([
+                        ...user.profileImages,
+                        ...Array(MAX_PROFILE_IMAGES - user.profileImages.length).fill("")
+                    ]);
+                  }
+                
+            } catch (error) {
+                console.error('Failed to fetch user:', error);
+                setSnackbarMessage(error.response.data);
+                setSnackbarSeverity('error');
+                setOpenSnackBar(true);
+            }
+        };
+
     return (
         <>
             <Layout>
@@ -160,7 +242,9 @@ export default function CreateProfile() {
                     sx={{ p: 4, height: '100%', display: 'flex', justifyContent: 'space-around' }}
                 >
                     <Grid size={{ md: 6, xs: 12 }} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-around' }}>
-                        <Typography variant="h4" sx={{ color: 'primary.main' }}>Create Your Account</Typography>
+                        <Typography variant="h4" sx={{ color: 'primary.main' }}>
+                            {editMode ? "Edit Your Account" : "Create Your Account"}
+                            </Typography>
                         <Box>
                             <Typography variant="h6" sx={{ color: 'text.primary' }}>Upload a profile picture*</Typography>
                             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -307,6 +391,8 @@ export default function CreateProfile() {
                                 name='bio'
                                 value={formData.bio}
                                 onChange={handleChange}
+                                error={errors.bio}
+                                helperText={errors.bio ? 'Bio is required' : ''}
                             />
                         </Box>
                     </Grid>
@@ -382,13 +468,15 @@ export default function CreateProfile() {
                                 ))}
 
                             </Grid>
-                            <Button variant='contained' type="submit" sx={{ width: '100%' }}>Submit</Button>
+                            <Button variant='contained' type="submit" sx={{ width: '100%' }}>
+                                {editMode ? "Update" : "Submit"}
+                            </Button>
                         </Box>
                     </Grid>
                 </Grid>
             </Layout>
 
-            <SnackbarAlert open={openSnackBar} handleClose={handleCloseSnackbar} message={snackbarMessage} severity="error" />
+            <SnackbarAlert open={openSnackBar} handleClose={handleCloseSnackbar} message={snackbarMessage} severity={snackbarSeverity} />
         </>
     )
 }

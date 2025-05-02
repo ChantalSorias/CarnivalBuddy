@@ -1,6 +1,9 @@
 export interface User {
-    image: File | null,
+    id: string,
+    googleId: string,
+    image: string,
     username: string,
+    email: string,
     location: string,
     background: string[],
     favouriteSong: Song,

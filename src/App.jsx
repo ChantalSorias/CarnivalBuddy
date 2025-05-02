@@ -5,7 +5,9 @@ import { orange, purple } from '@mui/material/colors';
 import Admin from './Admin/Admin';
 import Feed from './Feed/Feed';
 import LogIn from './LogIn/LogIn';
-import CreateProfile from './CreateProfile/CreateProfile';
+import ProfileForm from './ProfileForm/ProfileForm';
+import ViewProfile from './ViewProfile/ViewProfile';
+import { useAuth } from '../src/context/AuthContext';
 
 const theme = createTheme({
   palette: {
@@ -30,6 +32,7 @@ const theme = createTheme({
 });
 
 function App() {
+  const { currentUser } = useAuth();
   return (
     <ThemeProvider theme={theme}>
       <Routes>
@@ -37,7 +40,9 @@ function App() {
         <Route path='/feed' element={<Feed />} />
         <Route path='/admin' element={<Admin />} />
         <Route path='/login' element={<LogIn />} />
-        <Route path='/signup' element={<CreateProfile />} />
+        <Route path='/signup' element={<ProfileForm />} />
+        <Route path="/profile/edit" element={ currentUser ? <ProfileForm /> : <LogIn />} />
+        <Route path='/profile/:username' element={<ViewProfile />} />
       </Routes>
     </ThemeProvider>
   )
