@@ -25,45 +25,8 @@ export default function Feed() {
     };
     return (
         <Layout>
-            {/* <List>
-                <ListItem>
-                    <Card className='feed-add-post'>
-                        <CardActions className='post-comment'>
-                            <Avatar aria-label="user image" />
-                            <InputBase
-                                placeholder="Share a post..."
-                                multiline
-                                maxRows={4}
-                                className='feed-add-post-input-field'
-                                size="small"
-                                sx={{ p: 0.5 }}
-                                inputProps={{ 'aria-label': 'add a post' }}
-                            />
-                            <input
-                                ref={fileInputRef}
-                                type="file"
-                                accept="image/*"
-                                style={{ display: 'none' }}
-                                onChange={handleFileChange}
-                            />
-                            <IconButton aria-label="add to favorites" onClick={() => fileInputRef.current?.click()}>
-                                <ImageOutlinedIcon />
-                            </IconButton>
-
-                            <Button aria-label="add a post" color="secondary" variant='contained' sx={{ color: 'white', pr: 3, pl: 3 }}>
-                                Post
-                            </Button>
-                        </CardActions>
-                    </Card>
-                </ListItem>
-
-                {posts.map((post, index) => (
-                    <ListItem key={index}>
-                        <Post content={post} />
-                    </ListItem>
-                ))}
-            </List> */}
-            <Grid container spacing={4} sx={{ pt: 2 }}>
+            <Box className="feed-container">
+            <Grid container spacing={4} sx={{ pt: 2 }} direction="column">
                 <Grid size={12}>
                     <Card className='feed-add-post'>
                         <CardActions className='post-comment'>
@@ -92,7 +55,8 @@ export default function Feed() {
                                 Post
                             </Button>
                         </CardActions>
-                    </Card></Grid>
+                    </Card>
+                </Grid>
 
                 {posts.map((post, index) => (
                     <Grid key={index}>
@@ -100,6 +64,7 @@ export default function Feed() {
                     </Grid>
                 ))}
             </Grid>
+            </Box>
         </Layout>
     );
 }

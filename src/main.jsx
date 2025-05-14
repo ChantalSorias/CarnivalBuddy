@@ -6,15 +6,18 @@ import { BrowserRouter } from 'react-router-dom';
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import { AUTH_CONFIG } from './config/authConfig.js';
 import { AuthProvider } from './context/AuthContext.js';
+import { SnackbarProvider } from './context/SnackbarContext.js';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
-    <GoogleOAuthProvider clientId={AUTH_CONFIG.GOOGLE_CLIENT_ID}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </GoogleOAuthProvider>
+      <SnackbarProvider>
+        <GoogleOAuthProvider clientId={AUTH_CONFIG.GOOGLE_CLIENT_ID}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </GoogleOAuthProvider>
+      </SnackbarProvider>
     </AuthProvider>
   </StrictMode>,
 )

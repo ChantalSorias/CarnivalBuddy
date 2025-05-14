@@ -1,4 +1,3 @@
-import React from 'react';
 import Layout from '../Layout/Layout';
 import { Button, Grid, Typography } from '@mui/material';
 import { useGoogleLogin } from '@react-oauth/google';
@@ -7,10 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import { getUserByGoogleId } from '../services/userService';
 import { DecodedToken, useAuth } from '../context/AuthContext';
 import { jwtDecode } from 'jwt-decode';
-
+import { useSnackbar } from '../context/SnackbarContext';
 
 export default function LogIn() {
-    const navigate = useNavigate();
 
     return (
         <>
@@ -33,26 +31,33 @@ export default function LogIn() {
 }
 
 export const GoogleLoginButton = () => {
+    const { showSnackbar } = useSnackbar();
     const navigate = useNavigate();
     const { setCurrentUser } = useAuth();
 
     const login = useGoogleLogin({
         onSuccess: async credentialResponse => {
-            const googleProfile = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-                headers: { Authorization: `Bearer ${credentialResponse.access_token}` }
-            })
-            .then(res => res.json());
-            
-            var userData = await getUserByGoogleId(googleProfile.sub);
-            var token = userData.token;
+            try {
+                const googleProfile = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+                    headers: { Authorization: `Bearer ${credentialResponse.access_token}` }
+                })
+                .then(res => res.json());
+                
+                var userData = await getUserByGoogleId(googleProfile.sub);
+                var token = userData.token;
 
-            localStorage.setItem('token', token);
-            const decoded: DecodedToken = jwtDecode(token);
-            setCurrentUser(decoded);
-            navigate('/');
+                localStorage.setItem('token', token);
+                const decoded: DecodedToken = jwtDecode(token);
+                setCurrentUser(decoded);
+                navigate('/');
+            } catch (error) {
+                console.log('Login Failed: ', error);
+                showSnackbar('Login Failed', 'error');
+            }
         },
         onError: () => {
             console.log('Login Failed');
+            showSnackbar('Login Failed', 'error');
         }
     })
 
@@ -62,24 +67,31 @@ export const GoogleLoginButton = () => {
 }
 
 export const GoogleSignUpButton = () => {
+    const { showSnackbar } = useSnackbar();
     const navigate = useNavigate();
     const signup = useGoogleLogin({
         onSuccess: async credentialResponse => {
-            const googleProfile = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
-                headers: { Authorization: `Bearer ${credentialResponse.access_token}` }
-            })
-            .then(res => res.json());
-            
-            const googleUser = {
-                sub: googleProfile.sub,
-                email: googleProfile.email,
-                name: googleProfile.name
-              };
-            localStorage.setItem("googleUser", JSON.stringify(googleUser));
-            navigate('/signup');
+            try {
+                const googleProfile = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
+                    headers: { Authorization: `Bearer ${credentialResponse.access_token}` }
+                })
+                .then(res => res.json());
+                
+                const googleUser = {
+                    sub: googleProfile.sub,
+                    email: googleProfile.email,
+                    name: googleProfile.name
+                };
+                localStorage.setItem("googleUser", JSON.stringify(googleUser));
+                navigate('/signup');
+            } catch (error) {
+                console.log('Sign Up Failed: ', error);
+                showSnackbar('Sign Up Failed', 'error');
+            }
         },
         onError: () => {
-            console.log('Login Failed');
+            console.log('Sign Up Failed');
+            showSnackbar('Sign Up Failed', 'error');
         }
     })
 

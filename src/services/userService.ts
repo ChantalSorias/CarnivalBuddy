@@ -1,9 +1,11 @@
 import axios from '../config/axiosInstance';
 import { User } from '../Models/User';
 
+const API_BASE = '/users';
+
 export async function getUser(username: string): Promise<User> {
     try {
-        const res = await axios.get(`/users/username/${username}`);
+        const res = await axios.get(`${API_BASE}/username/${username}`);
         return res.data;
         
     } catch (error) {
@@ -14,7 +16,7 @@ export async function getUser(username: string): Promise<User> {
 
 export async function createUser(user: User) {
     try {
-        const res = await axios.post('/users', user);
+        const res = await axios.post(API_BASE, user);
         return res.data;
         
     } catch (error) {
@@ -26,7 +28,7 @@ export async function createUser(user: User) {
 export async function editUser(user: User) {
     const token = localStorage.getItem('token');
     try {
-        await axios.put(`/users/${user.id}`, user, {
+        await axios.put(`${API_BASE}/${user.id}`, user, {
             headers: {
                 Authorization: `Bearer ${token}`,
             }
@@ -40,7 +42,7 @@ export async function editUser(user: User) {
 
 export async function getUserByGoogleId(googleId: string): Promise<{token: string, user: User}> {
     try {
-        const res = await axios.get(`/users/google-login/${googleId}`);
+        const res = await axios.get(`${API_BASE}/google-login/${googleId}`);
         return res.data;
         
     } catch (error) {
@@ -51,7 +53,7 @@ export async function getUserByGoogleId(googleId: string): Promise<{token: strin
 
 export async function getUserById(id: string): Promise<User> {
     try {
-        const res = await axios.get(`/users/${id}`);
+        const res = await axios.get(`${API_BASE}/${id}`);
         return res.data;
         
         

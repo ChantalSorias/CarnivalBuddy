@@ -1,4 +1,3 @@
-import React from 'react';
 import { AppBar, Box, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import FeedIcon from '@mui/icons-material/Feed';
@@ -46,7 +45,7 @@ export default function Nav({ isDesktop, drawerWidth, toolbarHeight }) {
         width: drawerWidth, flexShrink: 0,
         [`& .MuiDrawer-paper`]: {
           width: drawerWidth,
-          top: toolbarHeight, // Push drawer below the AppBar
+          top: toolbarHeight,
           height: `calc(100% - ${toolbarHeight}px)`,
         },
       }}>

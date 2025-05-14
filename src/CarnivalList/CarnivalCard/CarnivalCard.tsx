@@ -1,13 +1,22 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Card, CardActions, CardContent, CardMedia, Chip, Grid, IconButton, Typography } from '@mui/material';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { formatToLocalDate } from '../../utils/dateUtils';
-import './CarnivalCard.css'
+import './CarnivalCard.css';
+import { Carnival } from '../../Models/Carnival';
+import { useAuth } from '../../context/AuthContext';
 
-export default function CarnivalCard({ content }) {
+interface CarnivalCardProps {
+    content: Carnival;
+    handleLikeToggle: (id: string, currentlyLiked: boolean) => void;
+}
+
+export default function CarnivalCard({ content, handleLikeToggle }: CarnivalCardProps) {
     const [imgSrc, setImgSrc] = useState(content.image);
     const defaultImage = "src/assets/default-carnival-image.jpg";
+    const entityId = content.id;
+    const { currentUser } = useAuth();
 
     return (
         <Card className='carnival-card'>
@@ -27,7 +36,7 @@ export default function CarnivalCard({ content }) {
                 </Typography>
             </CardContent>
             <CardActions className='carnival-card-actions'>
-                {content.links.length > 0 ?
+                {content.links.length > 0 &&
 
                     <Grid container spacing={1} wrap="wrap">
                         {content.links.map((link, idx) => (
@@ -42,14 +51,19 @@ export default function CarnivalCard({ content }) {
                                     sx={{ "&:hover": { color: 'white', backgroundColor: "secondary.main" } }} />
                             </Grid>
                         ))}
-                    </Grid> : ""}
-                {content.liked ?
-                    <IconButton aria-label="remove to favorites">
-                        <FavoriteIcon />
-                    </IconButton> :
-                    <IconButton aria-label="add to favorites">
-                        <FavoriteBorderIcon />
-                    </IconButton>}
+                    </Grid>
+                }
+                
+                {currentUser && (
+                    content.liked ?
+                        <IconButton aria-label="remove to favorites" onClick={() => handleLikeToggle(entityId, content.liked)}>
+                            <FavoriteIcon />
+                        </IconButton> :
+                        <IconButton aria-label="add to favorites" onClick={() => handleLikeToggle(entityId, content.liked)}>
+                            <FavoriteBorderIcon />
+                        </IconButton>
+                    )
+                }
             </CardActions>
         </Card>
     );

@@ -1,4 +1,3 @@
-import React from 'react';
 import { AppBar, Avatar, Box, Button, IconButton, Link, Toolbar, Typography } from '@mui/material';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import './TopBar.css';
@@ -7,12 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 export default function TopBar() {
-    const { currentUser: user, setCurrentUser: setUser } = useAuth();
-
+    const { currentUser, setCurrentUser } = useAuth();
     const navigate = useNavigate();
+    
     const handleLogout = () => {
         localStorage.removeItem('token');
-        setUser(null);
+        setCurrentUser(null);
         navigate('/');
     };
     
@@ -22,7 +21,7 @@ export default function TopBar() {
                 <Toolbar className='topbar-toolbar'>
                     <Typography variant="h6" component="div">{GENERAL.APP_NAME}</Typography>
                     <div>
-                        {user && (
+                        {currentUser && (
                             <>
                                 <IconButton
                                     size="large"
@@ -30,7 +29,7 @@ export default function TopBar() {
                                     color="inherit"
                                 >
                                     
-                                    <Avatar src={user.image} component={Link} href={`/profile/${user.username}`} />
+                                    <Avatar src={currentUser.image} component={Link} href={`/profile/${currentUser.username}`} />
                                 </IconButton>
                                 <IconButton
                                     size="large"
@@ -42,7 +41,7 @@ export default function TopBar() {
                                 <Button onClick={handleLogout} sx={{ color: 'white' }}>Log Out</Button>
                             </>
                         )}
-                        {!user && (
+                        {!currentUser && (
                             <Button component={Link} href="/login" sx={{ color: 'white' }}>Log In</Button>
                         )}
 

@@ -5,15 +5,17 @@ import EditIcon from '@mui/icons-material/Edit';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import { countries } from '../Models/Country';
-import SnackbarAlert from '../ReusableComponents/SnackBarAlert/SnackBarAlert';
 import { User } from '../Models/User';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { createUser, editUser, getUserById } from '../services/userService';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { DecodedToken, useAuth } from '../context/AuthContext';
+import { useSnackbar } from '../context/SnackbarContext';
 
 export default function ProfileForm() {
+    const { showSnackbar } = useSnackbar();
+    
     const MAX_PROFILE_IMAGES = 3;
     const fileInputRef = React.useRef<HTMLInputElement>(null);
     const [imageUrl, setImageUrl] = useState<string>('');
@@ -24,10 +26,6 @@ export default function ProfileForm() {
         label: `${country.flag} ${country.name}`,
         code: country.code,
     }));
-
-    const [openSnackBar, setOpenSnackBar] = useState(false);
-    const [snackbarMessage, setSnackbarMessage] = useState('');
-    const [snackbarSeverity, setSnackbarSeverity] = useState('error');
 
     const storedUser = JSON.parse(localStorage.getItem("googleUser") || '{}');
     const [formData, setFormData] = useState<User>({
@@ -122,30 +120,11 @@ export default function ProfileForm() {
                 navigate('/');
             }
 
-            setSnackbarMessage(message);
-                setSnackbarSeverity('success');
-                setOpenSnackBar(true);
+            showSnackbar(message, 'success');
         }
         catch(error) {
-            var message = "Failed to create profile."
-            
-            if (axios.isAxiosError(error)) {
-                if (error.response?.status === 401) {
-                    message = "Unauthorized.";
-                } else if (error.response?.status === 403) {
-                    message = "Forbidden.";
-                } else if (error.response?.status === 404) {
-                    message = "User not found.";
-                } else {
-                    if (editMode) {
-                        message = "Failed to edit profile.";
-                    }
-                }
-            }
-
-            setSnackbarMessage(message);
-            setSnackbarSeverity('error');
-            setOpenSnackBar(true);
+            var message = editMode ? "Failed to edit profile" : "Failed to create profile";
+            showSnackbar(`${message}: ${error.response.data || error.response.statusText}`, 'error');
         }
     };
 
@@ -160,9 +139,7 @@ export default function ProfileForm() {
 
     const fileSizeIsValid = (file) => {
         if (file && file.size > 1.5 * 1024 * 1024) {
-            setSnackbarMessage("File size is too large. Please select a file smaller than 1.5MB.");
-            setSnackbarSeverity('error');
-            setOpenSnackBar(true);
+            showSnackbar("File size is too large. Please select a file smaller than 1.5MB.", 'error');
             return false;
         }
         return true;
@@ -195,10 +172,6 @@ export default function ProfileForm() {
         .map(code => countryOptions.find(opt => opt.code === code))
         .filter(Boolean);
 
-    const handleCloseSnackbar = () => {
-        setOpenSnackBar(false);
-    };
-
     // Edit Mode
     const location = useLocation();
     const [editMode, setEditMode] = useState<boolean>(location.pathname.includes('edit'));
@@ -227,9 +200,7 @@ export default function ProfileForm() {
                 
             } catch (error) {
                 console.error('Failed to fetch user:', error);
-                setSnackbarMessage(error.response.data);
-                setSnackbarSeverity('error');
-                setOpenSnackBar(true);
+                showSnackbar(error.response.data, 'error');
             }
         };
 
@@ -475,8 +446,6 @@ export default function ProfileForm() {
                     </Grid>
                 </Grid>
             </Layout>
-
-            <SnackbarAlert open={openSnackBar} handleClose={handleCloseSnackbar} message={snackbarMessage} severity={snackbarSeverity} />
         </>
     )
 }

@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Layout from '../Layout/Layout';
 import { Link, useParams } from 'react-router-dom';
-import SnackbarAlert from '../ReusableComponents/SnackBarAlert/SnackBarAlert';
 import { Avatar, Box, Button, Grid, Typography } from '@mui/material';
 import { User } from '../Models/User';
 import { countries, Country } from '../Models/Country';
 import { getUser } from '../services/userService';
 import { useAuth } from '../context/AuthContext';
+import { useSnackbar } from '../context/SnackbarContext';
 
 export default function ViewProfile() {
+    const { showSnackbar } = useSnackbar();
     const { username } = useParams();
     const [user, setUser] = useState<User>();
-    const [openSnackBar, setOpenSnackBar] = useState(false);
-    const [snackbarMessage, setSnackbarMessage] = useState('');
     const [location, setLocation] = useState<Country | undefined>();
     const [background, setBackground] = useState<Country[]>();
     const [favouriteCarnivalDesination, setFavouriteCarnivalDesination] = useState<Country | undefined>();
@@ -25,8 +24,7 @@ export default function ViewProfile() {
     const fetchUser = async () => {
         if (!username) {
             console.error('Failed to fetch user: username is undefined');
-            setSnackbarMessage('Failed to fetch user: username is not defined');
-            setOpenSnackBar(true);
+            showSnackbar('Failed to fetch user: username is not defined', 'error');
             return;
         }
 
@@ -42,14 +40,9 @@ export default function ViewProfile() {
             setFavouriteCarnivalDesination(countries.find(c => c.code === user.favouriteCarnivalDesination));
         } catch (error) {
             console.error('Failed to fetch user:', error);
-            setSnackbarMessage(error.response.data);
-            setOpenSnackBar(true);
+            showSnackbar(error.response.data, 'error');
         }
     };
-
-    const handleCloseSnackbar = () => {
-        setOpenSnackBar(false);
-    }
 
     return (
         <>
@@ -115,7 +108,6 @@ export default function ViewProfile() {
                 </Box>
                 }
             </Layout>
-            <SnackbarAlert open={openSnackBar} handleClose={handleCloseSnackbar} message={snackbarMessage} severity="error" />
         </>
     );
 }

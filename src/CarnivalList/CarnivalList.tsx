@@ -1,35 +1,33 @@
-import React, { useMemo, useState } from 'react';
-import Carousel from 'react-multi-carousel';
+import { useEffect, useState } from 'react';
 import 'react-multi-carousel/lib/styles.css';
 import { Box, Button, Grid, Paper, Typography } from '@mui/material';
 import CarnivalCard from './CarnivalCard/CarnivalCard';
-import carnivalListData from './CarnivalListData.json';
 import { Carnival } from '../Models/Carnival';
 import './CarnivalList.css';
 
-export default function CarnivalList({ likedOnly }) {
+export default function CarnivalList({ carnivals, handleLikeToggle }) {
     const [nextCarnival, setNextCarnival] = useState<Carnival | undefined>(undefined);
     const [upcomingCarnivals, setUpcomingCarnivals] = useState<Carnival[] | undefined>(undefined);
     const [pastCarnivals, setPastCarnivals] = useState<Carnival[] | undefined>(undefined);
 
-    const splicedListLength = 4;
+    const SPLICED_LIST_LENGTH = 4;
     const [showAllUpcoming, setShowAllUpcoming] = useState(false);
-    const upcomingCarnivalsToDisplay = showAllUpcoming ? upcomingCarnivals : upcomingCarnivals?.slice(0, splicedListLength);
+    const upcomingCarnivalsToDisplay = showAllUpcoming ? upcomingCarnivals : upcomingCarnivals?.slice(0, SPLICED_LIST_LENGTH);
 
     const [showAllPrevious, setShowAllPrevious] = useState(false);
-    const previousCarnivalsToDisplay = showAllPrevious ? pastCarnivals : pastCarnivals?.slice(0, splicedListLength);
+    const previousCarnivalsToDisplay = showAllPrevious ? pastCarnivals : pastCarnivals?.slice(0, SPLICED_LIST_LENGTH);
 
-    React.useEffect(() => {
-        sortCarnivals(carnivalListData);
-    }, []);
+    useEffect(() => {
+        sortCarnivals(carnivals);
+    }, [carnivals]);
 
-    const sortCarnivals = (carnivals) => {
+    const sortCarnivals = (carnivalList: Carnival[]) => {
         const currentDate = new Date();
 
         var futureCarnivals: Carnival[] = [];
         var previousCarnivals: Carnival[] = [];
 
-        carnivals.forEach(carnival => {
+        carnivalList.forEach(carnival => {
             const paradeDate = new Date(carnival.paradeDates[0]);
             if (paradeDate >= currentDate) {
                 futureCarnivals.push(carnival);
@@ -47,32 +45,13 @@ export default function CarnivalList({ likedOnly }) {
         setPastCarnivals(previousCarnivals);
     };
 
-    // const carouselResponsiveInputs = {
-    //     largeDesktop: {
-    //         breakpoint: { max: 4000, min: 3000 },
-    //         items: 6
-    //     },
-    //     desktop: {
-    //         breakpoint: { max: 3000, min: 1024 },
-    //         items: 4
-    //     },
-    //     tablet: {
-    //         breakpoint: { max: 1024, min: 464 },
-    //         items: 2
-    //     },
-    //     mobile: {
-    //         breakpoint: { max: 464, min: 0 },
-    //         items: 1
-    //     }
-    // };
-
-    if (nextCarnival === undefined || upcomingCarnivals === undefined || pastCarnivals === undefined) {
+    if (upcomingCarnivals === undefined || pastCarnivals === undefined) {
         return <div>Loading...</div>;
     }
 
     return (
         <div>
-            <div className='carnival-list-next-container'>
+            {nextCarnival && <div className='carnival-list-next-container'>
                 <Box className='carnival-list-box'>
                     <Paper
                         elevation={6}
@@ -90,13 +69,13 @@ export default function CarnivalList({ likedOnly }) {
                             </Grid>
                             <Box sx={{ mr: 2, ml: 2, mb: 1 }}></Box>
                             <Grid>
-                                <CarnivalCard content={nextCarnival} />
+                                <CarnivalCard content={nextCarnival} handleLikeToggle={handleLikeToggle} />
                             </Grid>
                         </Grid>
                     </Paper>
                 </Box>
-            </div>
-            <Box className='carnival-list-upcoming-container'
+            </div>}
+            {upcomingCarnivals.length > 0 && <Box className='carnival-list-upcoming-container'
                 sx={{
                     borderTop: 1,
                     borderColor: 'primary.main',
@@ -107,21 +86,14 @@ export default function CarnivalList({ likedOnly }) {
                 <div>
                     <Typography sx={{ fontWeight: 'bold' }} variant="h4" component="div" color='primary' className='carnival-list-all-title'>Upcoming Carnivals</Typography>
                 </div>
-                {/* <Carousel responsive={carouselResponsiveInputs}>
-                    {upcomingCarnivals.map((c) => {
-                        return (
-                            <CarnivalCard content={c} />
-                        );
-                    })}
-                </Carousel> */}
                 <Grid container spacing={3}>
                     {upcomingCarnivalsToDisplay?.map((c, index) => (
                         <Grid key={index}>
-                            <CarnivalCard content={c} />
+                            <CarnivalCard content={c} handleLikeToggle={handleLikeToggle} />
                         </Grid>
                     ))}
                 </Grid>
-                {!showAllUpcoming && upcomingCarnivals.length > splicedListLength && (
+                {!showAllUpcoming && upcomingCarnivals.length > SPLICED_LIST_LENGTH && (
                     <Button
                         variant="text"
                         color="primary"
@@ -141,8 +113,8 @@ export default function CarnivalList({ likedOnly }) {
                         Show Less
                     </Button>
                 )}
-            </Box>
-            <Box className='carnival-list-upcoming-container'
+            </Box>}
+            {pastCarnivals.length > 0 && <Box className='carnival-list-upcoming-container'
                 sx={{
                     borderTop: 1,
                     borderColor: 'primary.main',
@@ -156,11 +128,11 @@ export default function CarnivalList({ likedOnly }) {
                 <Grid container spacing={1}>
                     {previousCarnivalsToDisplay?.map((c, index) => (
                         <Grid key={index}>
-                            <CarnivalCard content={c} />
+                            <CarnivalCard content={c} handleLikeToggle={handleLikeToggle} />
                         </Grid>
                     ))}
                 </Grid>
-                {!showAllPrevious && pastCarnivals.length > splicedListLength && (
+                {!showAllPrevious && pastCarnivals.length > SPLICED_LIST_LENGTH && (
                     <Button
                         variant="text"
                         color="primary"
@@ -180,7 +152,7 @@ export default function CarnivalList({ likedOnly }) {
                         Show Less
                     </Button>
                 )}
-            </Box>
+            </Box>}
         </div>
     )
 }
