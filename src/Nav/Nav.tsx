@@ -1,4 +1,4 @@
-import { AppBar, Box, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from '@mui/material';
+import { AppBar, Box, Divider, Drawer, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import FeedIcon from '@mui/icons-material/Feed';
 import ChatIcon from '@mui/icons-material/Chat';
@@ -15,7 +15,7 @@ export default function Nav({ isDesktop, drawerWidth, toolbarHeight }) {
   ];
 
   const adminItems = [
-    { label: 'Admin', icon: <AdminPanelSettingsIcon />, route: "/admin" },
+    { label: 'Carnivals', icon: <AdminPanelSettingsIcon />, route: "/admin/carnivals" },
   ];
 
   const getDrawerNavigation = () => {
@@ -55,6 +55,7 @@ export default function Nav({ isDesktop, drawerWidth, toolbarHeight }) {
           ))}
         </List>
         <Divider />
+        <Typography sx={{textAlign: 'center', color: 'primary.main', mt: 2}} variant='h6'>Admin</Typography>
         {adminItems.map((item, index) => (
           getListItem(item)
         ))}

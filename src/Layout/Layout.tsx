@@ -4,7 +4,7 @@ import { Box, useMediaQuery, useTheme } from '@mui/material';
 import './Layout.css';
 
 export default function Layout({ children }) {
-    const drawerWidth = 160;
+    const drawerWidth = 200;
     const toolbarHeight = 64;
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up('md'));

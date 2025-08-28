@@ -1,15 +1,17 @@
+import { Dayjs } from "dayjs"
+
 export type Carnival = {
-    id: string,
+    id?: string,
     title: string,
     description: string,
     location: string,
-    paradeDates: string[],
+    paradeDates: Dayjs[],
     image: string,
-    liked: boolean,
+    liked?: boolean,
     links: Link[],
 }
 
-type Link = {
+export type Link = {
     name: string,
     url: string,
 }

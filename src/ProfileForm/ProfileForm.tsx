@@ -8,7 +8,6 @@ import { countries } from '../Models/Country';
 import { User } from '../Models/User';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { createUser, editUser, getUserById } from '../services/userService';
-import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import { DecodedToken, useAuth } from '../context/AuthContext';
 import { useSnackbar } from '../context/SnackbarContext';

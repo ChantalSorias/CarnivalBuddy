@@ -13,9 +13,9 @@ interface CarnivalCardProps {
 }
 
 export default function CarnivalCard({ content, handleLikeToggle }: CarnivalCardProps) {
-    const [imgSrc, setImgSrc] = useState(content.image);
     const defaultImage = "src/assets/default-carnival-image.jpg";
-    const entityId = content.id;
+    const [imgSrc, setImgSrc] = useState(content.image || defaultImage);
+    const entityId = content.id!;
     const { currentUser } = useAuth();
 
     return (
@@ -56,10 +56,10 @@ export default function CarnivalCard({ content, handleLikeToggle }: CarnivalCard
                 
                 {currentUser && (
                     content.liked ?
-                        <IconButton aria-label="remove to favorites" onClick={() => handleLikeToggle(entityId, content.liked)}>
+                        <IconButton aria-label="remove from favorites" onClick={() => handleLikeToggle(entityId, content.liked!)}>
                             <FavoriteIcon />
                         </IconButton> :
-                        <IconButton aria-label="add to favorites" onClick={() => handleLikeToggle(entityId, content.liked)}>
+                        <IconButton aria-label="add to favorites" onClick={() => handleLikeToggle(entityId, content.liked!)}>
                             <FavoriteBorderIcon />
                         </IconButton>
                     )

@@ -29,7 +29,9 @@ export default function Home() {
                 return <CarnivalList carnivals={carnivals} handleLikeToggle={handleLikeToggle} />
             }
             case 'two': {
-                return <FavouriteCarnivalList carnivals={carnivals} handleLikeToggle={handleLikeToggle} />
+                if (currentUser) {
+                    return <FavouriteCarnivalList carnivals={carnivals} handleLikeToggle={handleLikeToggle} />
+                }
             }
 
             default: {
@@ -82,7 +84,7 @@ export default function Home() {
                     variant="fullWidth"
                 >
                     <Tab value="one" label="All Carnivals" />
-                    <Tab value="two" label="Saved Carnivals" />
+                    { currentUser && <Tab value="two" label="Saved Carnivals" /> }
                 </Tabs>
                 <div>
                     {getTabComponent()}
